@@ -144,14 +144,16 @@ var menuContent = {
 $(document).ready(function(){
 
 // var menuItem = $(".menu-item");
-  var menuItem = "<li class='menu-item'><a href=''></a>";
+  var menuItem = $('.menu-item');
   // console.log(menuItem.html())
   var menu = $(".menu");
   for(var i in menuContent["menu"]){
-    $(menuItem).children("a").attr('href',menuContent["menu"][i]['slug'])
-    $(menuItem).children("a").html(menuContent["menu"][i]['title'])
-    console.log($(menuItem).html())
-    $($(menuItem).html()).appendTo($(".menu"))
-
+   var li = document.createElement('li');
+   var a = document.createElement('a');
+   a.href = menuContent["menu"][i]['slug'];
+   a.innerHTML = menuContent["menu"][i]['title'];
+   li.setAttribute('class', 'menu-item')
+   li.appendChild(a);
+   menu.append(li);
   }
 })
